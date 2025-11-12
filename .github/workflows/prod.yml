@@ -1,0 +1,17 @@
+name: "testing-pipeline"
+
+on:
+ push:
+   branches:
+     - 'feture/**'
+     - 'main'
+     - 'hotfix/**'
+jobs:
+  terraformInit:
+    name: Terraform Init
+    runs-on: annu-don
+    steps:
+      - name: Actions baala pipeline
+        run: echo Jai Shree Krishna
+  
+     
