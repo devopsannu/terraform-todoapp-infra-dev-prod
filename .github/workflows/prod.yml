@@ -1,23 +1,40 @@
-name: "testing-pipeline"
+# name: "testing-pipeline"
 
-on:
- push:
-   branches:
-     - 'feture/**'
-     - 'main'
-     - 'hotfix/**'
-jobs:
-  terraformInit:
-    name: Terraform Init
-    runs-on: annu-don
-    steps:
-      - name: Actions baala pipeline
-        run: echo Jai Shree Krishna
+# on:
+#  push:
+#    branches:
+#      - 'feture/**'
+#      - 'main'
+#      - 'hotfix/**'
+# jobs:
+#   terraformInit:
+#     name: Terraform Init
+#     runs-on: annu-don
+#     steps:
+#       - name: Actions baala pipeline
+#         run: echo Jai Shree Krishna
 
-      - name: Actions ka dhasat
-        run: echo Jai Shree Ram
+#       - name: Actions ka dhasat
+#         run: echo Jai Shree Ram
         
-      - name: Action ka tadka
-        run: echo Jai Shree Shyam
+#       - name: Action ka tadka
+#         run: echo Jai Shree Shyam
+#######################################################################################################################
+#Requirement- Create github actions workflow with az login, Terraform Init, Validate, Plan Apply
+
+name: "Infra pipeline testing"
+on: workflow_dispatch
+
+jobs:
+  terraform-job:
+    runs-on: self-hosted
+    steps:
+      - name: chekout
+        uses: actions/checkout@v5.0.0
+ 
+
+
+
+        
   
      
