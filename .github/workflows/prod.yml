@@ -31,6 +31,10 @@ jobs:
     steps:
       - name: chekout
         uses: actions/checkout@v5.0.0
+
+      - name: Install Terraform
+        uses: little-core-labs/install-terraform@v2.0.0
+      
  
 
 
