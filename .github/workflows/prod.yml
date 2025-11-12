@@ -13,5 +13,11 @@ jobs:
     steps:
       - name: Actions baala pipeline
         run: echo Jai Shree Krishna
+
+      - name: Actions ka dhasat
+        run: echo Jai Shree Ram
+        
+      - name: Action ka tadka
+        run: echo Jai Shree Shyam
   
      
