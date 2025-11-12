@@ -62,11 +62,40 @@ jobs:
         run: terraform validate -no-color
         working-directory: environments/dev
         
+      
+        
+
+  teraform-init-plan: 
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: 7499e3e4-7797-4be4-87fa-97ff0194bc29
+          tenant-id: 2f639d16-fa2e-45d3-a733-6f1d7739d56c
+          subscription-id: d7b038b3-220d-47fb-8d8a-df373fd719c8
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color -input=false
         continue-on-error: true
         working-directory: environments/dev
+
+  teraform-init-Apply: 
+     runs-on: self-hosted
+     needs: teraform-init-plan
+     environment: dev
+     steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: 7499e3e4-7797-4be4-87fa-97ff0194bc29
+          tenant-id: 2f639d16-fa2e-45d3-a733-6f1d7739d56c
+          subscription-id: d7b038b3-220d-47fb-8d8a-df373fd719c8
+
           
           
           
