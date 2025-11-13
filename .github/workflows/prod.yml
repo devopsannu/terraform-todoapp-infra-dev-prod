@@ -30,10 +30,10 @@ permissions:
   contents: read
 
 jobs:
-  terraform-job:
+  teraform-init-plan:
  
     runs-on: self-hosted
-    environment: dev
+    # environment: dev
     steps:
       - name: chekout
         uses: actions/checkout@v5.0.0
@@ -63,27 +63,16 @@ jobs:
         id: validate
         run: terraform validate -no-color
         working-directory: environments/dev
-        
-      
-        
-
-  teraform-init-plan: 
-    runs-on: self-hosted
-    environment: dev
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5.0.0
-      - name: Azure Login
-        uses: Azure/login@v2.3.0
-        with:
-          client-id: 15f8f9e9-51f2-4e22-bf82-8f9e9e42ea39
-          tenant-id: 2f639d16-fa2e-45d3-a733-6f1d7739d56c
-          subscription-id: d7b038b3-220d-47fb-8d8a-df373fd719c8
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color -input=false
         continue-on-error: true
         working-directory: environments/dev
+        
+      
+        
+
+
 
   teraform-init-Apply: 
      runs-on: self-hosted
@@ -98,6 +87,11 @@ jobs:
           client-id: 15f8f9e9-51f2-4e22-bf82-8f9e9e42ea39
           tenant-id: 2f639d16-fa2e-45d3-a733-6f1d7739d56c
           subscription-id: d7b038b3-220d-47fb-8d8a-df373fd719c8
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+        working-directory: environments/dev
       - name: Terraform apply
         id: apply
         run: terraform apply --auto-approve
