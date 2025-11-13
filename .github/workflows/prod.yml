@@ -77,7 +77,7 @@ jobs:
   teraform-init-Apply: 
      runs-on: self-hosted
      needs: teraform-init-plan
-     environment: dev
+     # environment: dev
      steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
