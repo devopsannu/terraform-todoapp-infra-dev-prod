@@ -31,6 +31,7 @@ permissions:
 
 jobs:
   terraform-job:
+  environment: dev
     runs-on: self-hosted
     steps:
       - name: chekout
@@ -67,6 +68,7 @@ jobs:
 
   teraform-init-plan: 
     runs-on: self-hosted
+    environment: dev
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
